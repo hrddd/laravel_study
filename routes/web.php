@@ -16,3 +16,4 @@ Route::get('/', function () {
 });
 
 Route::get('hello', 'helloController@index');
+Route::post('hello', 'helloController@post');

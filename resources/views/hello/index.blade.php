@@ -3,11 +3,23 @@
     <body>
         <div class="wrapper">
             <header class="header">
-                <h1>my first template</h1>
+                <h1>my first form</h1>
             </header>
             <div class="content">
                 <main class="content-main">
                     this is 'hello.index' blade template.
+                    @isset ($entry_data)
+                    <p>Hello {{$entry_data['name']}}.</p>
+                    <p>Your ID is {{$entry_data['id']}}.</p>
+                    @else
+                    <p>please enter message...</p>
+                    @endif
+                    <form method="POST" action="/hello">
+                        {{ csrf_field() }}
+                        <label>name:</label><input type="text" name="name">
+                        <label>id:</label><input type="text" name="id">
+                        <input type="submit">
+                    </form>
                     <dl class="simple_description_list">
                         <dt class="simple_description_list-term">
                             Arguments 'Request'
@@ -20,12 +32,6 @@
                         </dt>
                         <dd class="simple_description_list-description">
                             <pre>{{$response}}</pre>
-                        </dd>
-                        <dt class="simple_description_list-term">
-                            Arguments 'msg'
-                        </dt>
-                        <dd class="simple_description_list-description">
-                            <pre>{{$msg}}</pre>
                         </dd>
                     </dl>
                 </main>

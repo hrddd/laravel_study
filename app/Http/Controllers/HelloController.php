@@ -9,7 +9,19 @@ class HelloController extends Controller
 {
     public function index(Request $request, Response $response){
         $data = [
-            'msg' => 'arguments string',
+            'request' => $request,
+            'response' => $response,
+        ];
+        return view('hello.index', $data);
+    }
+    
+    public function post(Request $request, Response $response){
+        $entry_data = [
+            'name' => $request -> name,
+            'id' => $request -> id,
+        ];
+        $data = [
+            'entry_data' => $entry_data,
             'request' => $request,
             'response' => $response,
         ];
