@@ -3,10 +3,11 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Http\Response;
 
 class HelloController extends Controller
 {
-    public function index(){
+    public function index(Request $request, Response $response){
         return <<<EOF
 <html>
     <head></head>
@@ -18,6 +19,20 @@ class HelloController extends Controller
             <div class="content">
                 <main class="content-main">
                     this is 'index' action of 'HelloController'.
+                    <dl class="simple_description_list">
+                        <dt class="simple_description_list-term">
+                            Request
+                        </dt>
+                        <dd class="simple_description_list-description">
+                            <pre>{$request}</pre>
+                        </dd>
+                        <dt class="simple_description_list-term">
+                            Response
+                        </dt>
+                        <dd class="simple_description_list-description">
+                            <pre>{$response}</pre>
+                        </dd>
+                    </dl>
                 </main>
                 <aside class="content-sub"></aside>
             </div>
