@@ -37,15 +37,16 @@ $list_item = [
     @else
     <p>please enter message...</p>
     @endif
-    <ul class="list">
-        @each('components.item', $list_item, 'item')
-    </ul>
     <form method="POST" action="/hello">
         {{ csrf_field() }}
         <label>name:</label><input type="text" name="name">
         <label>id:</label><input type="text" name="id">
         <input type="submit">
     </form>
+    <ul class="list">
+        @each('components.item', $list_item, 'item')
+    </ul>
+    <p>{{$view_messages}}</p>
     <dl class="simple_description_list">
         <dt class="simple_description_list-term">
             Arguments 'Request'
