@@ -17,9 +17,16 @@ class HelloController extends Controller
     }
 
     public function post(Request $request, Response $response){
+        $validate_rule = [
+            'entry_name' => 'required',
+            'entry_email' => 'email',
+            'entry_video' => 'required|mimetypes:video/avi,video/mpeg,video/quicktime'
+        ];
+        $this->validate($request, $validate_rule);
         $entry_data = [
-            'name' => $request -> name,
-            'id' => $request -> id,
+            'name' => $request -> entry_name,
+            'email' => $request -> entry_email,
+            'video' => $request -> entry_video
         ];
         $data = [
             'entry_data' => $entry_data,

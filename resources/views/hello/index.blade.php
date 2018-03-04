@@ -29,19 +29,30 @@ $list_item = [
     index page
 @endsection
 @section('content')
-    @parent
     this is 'hello.index' blade template.
+    @if(count($errors) > 0)
+    <h2>Error!!</h2>
+    <ul class="error">
+        @foreach($errors->all() as $error)
+        <li class="error-item">{{$error}}</li>
+        @endforeach
+    </ul>
+    @endif
     @isset ($entry_data)
-    <p>Hello {{$entry_data['name']}}.</p>
-    <p>Your ID is {{$entry_data['id']}}.</p>
+    <h2>Your Entry Information</h2>
+    <p>Hello {{$entry_data['name']}}.({{$entry_data['email']}})</p>
+    <div class="movie_preview">
+        {{$entry_data['movie']}}
+    </div>
     @else
     <p>please enter message...</p>
     @endif
     <form method="POST" action="/hello">
         {{ csrf_field() }}
-        <label>name:</label><input type="text" name="name">
-        <label>id:</label><input type="text" name="id">
-        <input type="submit">
+        <label>name:</label><input type="text" name="entry_name" value="{{old('entry_name')}}">
+        <label>email:</label><input type="text" name="entry_email" value="{{old('entry_email')}}">
+        <label>movie:</label><input type="file" name="entry_video" value="{{old('entry_video')}}">
+        <input type="submit" name="entry_submit">
     </form>
     <ul class="list">
         @each('components.item', $list_item, 'item')
