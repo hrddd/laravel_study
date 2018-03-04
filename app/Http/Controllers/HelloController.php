@@ -11,10 +11,11 @@ class HelloController extends Controller
         $data = [
             'request' => $request,
             'response' => $response,
+            'middleware_merge_data' => $request['data']
         ];
         return view('hello.index', $data);
     }
-    
+
     public function post(Request $request, Response $response){
         $entry_data = [
             'name' => $request -> name,
@@ -24,6 +25,7 @@ class HelloController extends Controller
             'entry_data' => $entry_data,
             'request' => $request,
             'response' => $response,
+            'middleware_merge_data' => $request['data']
         ];
         return view('hello.index', $data);
     }

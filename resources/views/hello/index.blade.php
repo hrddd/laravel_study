@@ -13,7 +13,7 @@ $list_item = [
     ],
     [
         'text' => 'next_item'
-    ], 
+    ],
 ];
 @endphp
 @extends('layouts.helloapp')
@@ -59,6 +59,16 @@ $list_item = [
         </dt>
         <dd class="simple_description_list-description">
             <pre>{{$response}}</pre>
+        </dd>
+        <dt class="simple_description_list-term">
+            Arguments '\$request->data'
+        </dt>
+        <dd class="simple_description_list-description">
+            <ul class="list">
+                @foreach($middleware_merge_data as $item)
+                <li class="list-item">{{$item['name']}}: {{$item['mail']}}</li>
+                @endforeach
+            </ul>
         </dd>
     </dl>
 @endsection

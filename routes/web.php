@@ -15,5 +15,7 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('hello', 'helloController@index');
-Route::post('hello', 'helloController@post');
+Route::get('hello', 'helloController@index')
+    ->middleware('hello');
+Route::post('hello', 'helloController@post')
+    ->middleware('hello');
