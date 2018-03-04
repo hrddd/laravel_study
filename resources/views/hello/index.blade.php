@@ -41,13 +41,16 @@ $list_item = [
     @isset ($entry_data)
     <h2>Your Entry Information</h2>
     <p>Hello {{$entry_data['name']}}.({{$entry_data['email']}})</p>
-    <div class="movie_preview">
-        {{$entry_data['movie']}}
-    </div>
+    <p>{{$entry_data['video']}}</p>
     @else
     <p>please enter message...</p>
     @endif
-    <form method="POST" action="/hello">
+    @isset ($tmp_video_path)
+    <div class="video_preview">
+        <video src='{{$tmp_video_path}}'></video>
+    </div>
+    @endif
+    <form method="POST" action="/hello" enctype="multipart/form-data">
         {{ csrf_field() }}
         <label>name:</label><input type="text" name="entry_name" value="{{old('entry_name')}}">
         <label>email:</label><input type="text" name="entry_email" value="{{old('entry_email')}}">

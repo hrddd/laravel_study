@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
+use App\Http\Requests\HelloRequest;
 
 class HelloController extends Controller
 {
@@ -16,23 +17,26 @@ class HelloController extends Controller
         return view('hello.index', $data);
     }
 
-    public function post(Request $request, Response $response){
-        $validate_rule = [
-            'entry_name' => 'required',
-            'entry_email' => 'email',
-            'entry_video' => 'required|mimetypes:video/avi,video/mpeg,video/quicktime'
-        ];
-        $this->validate($request, $validate_rule);
+    public function post(HelloRequest $request, Response $response){
         $entry_data = [
             'name' => $request -> entry_name,
             'email' => $request -> entry_email,
             'video' => $request -> entry_video
         ];
+        // memo: to upload large dimension file, must edit php.ini param--
+        // upload_max_filesize, post_max_size, memory_limit, max_execution_time
+        $file = $request -> file('entry_video');
+        $filename = $file->getClientOriginalName();
+        // memo: must make symbolic link (php artisan storage:link)
+        // ex. storage/app/public/ -> public/storage/
+        $path = storage_path().'/app/public/upload/video/';
+        $file -> move($path, $filename);
         $data = [
             'entry_data' => $entry_data,
             'request' => $request,
             'response' => $response,
-            'middleware_merge_data' => $request['data']
+            'middleware_merge_data' => $request['data'],
+            'tmp_video_path' => asset('storage/upload/video/'.$filename),
         ];
         return view('hello.index', $data);
     }
