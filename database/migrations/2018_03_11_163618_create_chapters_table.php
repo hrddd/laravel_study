@@ -17,6 +17,7 @@ class CreateChaptersTable extends Migration
             $table->increments('id');
             $table->integer('video_id');
             $table->integer('index');
+            $table->integer('name');
             $table->string('text');
             $table->time('start_time');
             $table->timestamps();

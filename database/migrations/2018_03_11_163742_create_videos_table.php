@@ -18,6 +18,7 @@ class CreateVideosTable extends Migration
             $table->integer('user_id');
             $table->string('url');
             $table->string('thumbnail_url');
+            $table->string('name');
             $table->string('text');
             $table->time('total_time');
             $table->integer('status');
