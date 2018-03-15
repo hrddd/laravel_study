@@ -18,3 +18,17 @@ path
 $ echo 'export PATH=~/.composer/vendor/bin:$PATH' >> ~/.bash_profile
 $ source ~/.bash_profile
 ```
+
+### Local Setting
+genarate key
+```
+php artisan key:generate
+```
+migration and seeding
+```
+php artisan migrate --seed
+```
+storage link
+```
+php artisan storage:link
+```

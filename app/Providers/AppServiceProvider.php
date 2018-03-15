@@ -13,7 +13,8 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        //
+        // to avoid unique key error on utf8mb4 database
+        // Schema::defaultStringLength(191);
     }
 
     /**
