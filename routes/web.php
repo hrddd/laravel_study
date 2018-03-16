@@ -23,3 +23,5 @@ Route::get('hello', 'helloController@index')
     ->middleware('hello');
 Route::post('hello', 'helloController@post')
     ->middleware('hello');
+
+Route::get('user', 'userController@index');

@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Database\Seeder;
+use App\User;
 
 class UsersTableSeeder extends Seeder
 {
@@ -16,7 +17,7 @@ class UsersTableSeeder extends Seeder
         for($i = 0; $i < 10; $i++)
         {
             $faker = Faker\Factory::create('ja_JP');
-            App\User::create([
+            User::create([
                 'name' => $faker -> userName(),
                 'email' => $faker -> email(),
                 'password' => bcrypt('secret'),
