@@ -32,3 +32,32 @@ storage link
 ```
 php artisan storage:link
 ```
+### Use MAMP
+.env
+```
+DB_DATABASE=your_awsome_database_name
+DB_USERNAME=root
+DB_PASSWORD=root
+DB_SOCKET=/Applications/MAMP/tmp/mysql/mysql.sock
+```
+
+/Applications/MAMP/conf/apache/extra/httpd-vhosts.conf
+Uncomment the following line in this file.
+```
+# Virtual hosts
+#Include /Applications/MAMP/conf/apache/extra/httpd-vhosts.conf
+```
+
+/Applications/MAMP/conf/apache/extra/httpd-vhosts.conf
+Add the following code to show page on MAMP server.
+```
+Listen 9999
+
+<VirtualHost *:9999>
+    DocumentRoot "/absolute/path/to/laravel_project/public"
+    <Directory "/absolute/path/to/laravel_project/public">
+        AllowOverride All
+    </Directory>
+</VirtualHost>
+```
+
