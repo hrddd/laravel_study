@@ -41,8 +41,8 @@ DB_PASSWORD=root
 DB_SOCKET=/Applications/MAMP/tmp/mysql/mysql.sock
 ```
 
-/Applications/MAMP/conf/apache/extra/httpd-vhosts.conf
-Uncomment the following line in this file.
+/Applications/MAMP/conf/apache/httpd.conf
+Uncomment a line in this file at #575.
 ```
 # Virtual hosts
 #Include /Applications/MAMP/conf/apache/extra/httpd-vhosts.conf
