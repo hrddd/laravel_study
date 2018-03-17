@@ -20,9 +20,7 @@ class UsersTableSeeder extends Seeder
             User::create([
                 'name' => $faker -> userName(),
                 'email' => $faker -> email(),
-                'password' => bcrypt('secret'),
-                'created_at' => $faker->dateTime(),
-                'updated_at' => $faker->dateTime(),
+                'password' => bcrypt('secret')
             ]);
         }
     }
