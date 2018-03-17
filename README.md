@@ -28,6 +28,10 @@ migration and seeding
 ```
 php artisan migrate --seed
 ```
+*if 'Class UsersTableSeeder does not exist'
+```
+composer dump-autoload
+```
 storage link
 ```
 php artisan storage:link
