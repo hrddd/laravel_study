@@ -24,4 +24,8 @@ Route::get('hello', 'helloController@index')
 Route::post('hello', 'helloController@post')
     ->middleware('hello');
 
-Route::get('user', 'userController@index');
+Route::get('user', 'userController@index')
+    ->middleware('auth');
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
